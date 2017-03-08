@@ -14,6 +14,7 @@ class Feed: Mappable {
     var imageUrl: String?
     var user: User?
     var title: String?
+    var timestamp: Int64?
     
     required init?(map: Map) {
         
@@ -24,5 +25,6 @@ class Feed: Mappable {
         imageUrl <- map["image_url"]
         user <- map["user"]
         title <- map["title"]
+        timestamp <- map["timestamp"]
     }
 }

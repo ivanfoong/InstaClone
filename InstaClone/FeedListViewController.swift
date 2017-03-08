@@ -13,6 +13,8 @@ import AlamofireImage
 
 class FeedListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyTableViewLabel: UILabel!
+    var refreshControl: UIRefreshControl!
     
     var feeds: [Feed] = []
     var feedToShow: Feed?
@@ -21,10 +23,17 @@ class FeedListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
         registerCell()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 240
-        downloadFeed()
+        emptyTableViewLabel.isHidden = true
+        
+        refreshData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,14 +52,27 @@ class FeedListViewController: UIViewController {
         tableView.register(UINib(nibName: "FeedCell", bundle: Bundle.main), forCellReuseIdentifier: String(describing: FeedCell.self))
     }
     
+    public func refreshData() {
+        downloadFeed()
+    }
+    
     private func downloadFeed() {
+        if !refreshControl.isRefreshing {
+            refreshControl.beginRefreshing()
+        }
         let urlString = "http://localhost:8888/feeds.json"
+        emptyTableViewLabel.isHidden = true
         Alamofire.request(urlString).responseObject { [weak self] (response: DataResponse<FeedListResponse>) in
+            sleep(2)
+            if let refreshControl = self?.refreshControl, refreshControl.isRefreshing {
+                refreshControl.endRefreshing()
+            }
             if let feeds = response.result.value?.feeds {
                 self?.feeds = feeds
                 self?.tableView.reloadData()
             } else {
                 //TODO handle error
+                self?.emptyTableViewLabel.isHidden = false
             }
         }
     }
@@ -75,7 +97,13 @@ extension FeedListViewController: UITableViewDataSource {
         let feed = feeds[indexPath.row]
         
         cell.userIdLabel.text = feed.user?.username
-        cell.feedTitleLabel.text = feed.title
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        if let timestamp = feed.timestamp {
+            let date = Date(timeIntervalSince1970: Double(timestamp))
+            cell.timestampLabel.text = dateFormatter.string(from: date)
+        }
         if let imageUrlString = feed.imageUrl, let imageUrl = URL(string: imageUrlString) {
             cell.feedImageView.af_setImage(withURL: imageUrl)
         }

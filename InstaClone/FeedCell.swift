@@ -11,7 +11,7 @@ import UIKit
 class FeedCell: UITableViewCell {
     @IBOutlet weak var feedImageView: UIImageView!
     @IBOutlet weak var userIdLabel: UILabel!
-    @IBOutlet weak var feedTitleLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +28,6 @@ class FeedCell: UITableViewCell {
         super.prepareForReuse()
         feedImageView.image = nil
         userIdLabel.text = nil
-        feedTitleLabel.text = nil
+        timestampLabel.text = nil
     }
 }

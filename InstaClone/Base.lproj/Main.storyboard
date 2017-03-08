@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,17 +30,30 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="bch-2w-2vE"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fail to load feeds" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsU-bV-aOe">
+                                <rect key="frame" x="16" y="317.5" width="343" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="MZl-7f-07G"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sWi-eP-POf" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="11a-bL-7TZ"/>
                             <constraint firstItem="sWi-eP-POf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3al-QS-Yiw"/>
                             <constraint firstItem="sWi-eP-POf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ACh-5l-rkM"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="TsU-bV-aOe" secondAttribute="leading" id="CYu-7M-K0Y"/>
                             <constraint firstItem="sWi-eP-POf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="YQy-fH-9zJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TsU-bV-aOe" secondAttribute="trailing" id="gTB-g1-FCy"/>
+                            <constraint firstItem="TsU-bV-aOe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pIh-Sl-QTy"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Feeds" id="FBe-Og-mpz"/>
                     <connections>
+                        <outlet property="emptyTableViewLabel" destination="TsU-bV-aOe" id="eZ8-ge-oUq"/>
                         <outlet property="tableView" destination="sWi-eP-POf" id="q1t-vD-7K3"/>
                         <segue destination="cIE-gL-o1b" kind="show" identifier="showFeedDetail" id="kwo-8Z-E8J"/>
                     </connections>
@@ -68,17 +82,30 @@
                                     <outlet property="delegate" destination="cIE-gL-o1b" id="vgw-7a-j0E"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fail to load comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P2A-gs-GI0">
+                                <rect key="frame" x="16" y="317.5" width="343" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="2Lu-Ck-ea4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="P2A-gs-GI0" firstAttribute="centerY" secondItem="wpb-Gc-hUu" secondAttribute="centerY" id="0Ne-iV-ql6"/>
                             <constraint firstItem="aZZ-zc-Sbi" firstAttribute="width" secondItem="wpb-Gc-hUu" secondAttribute="width" id="5GV-pD-Sfg"/>
                             <constraint firstItem="aZZ-zc-Sbi" firstAttribute="centerX" secondItem="wpb-Gc-hUu" secondAttribute="centerX" id="C2o-Y9-NbB"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="P2A-gs-GI0" secondAttribute="leading" id="J5O-hK-nYo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="P2A-gs-GI0" secondAttribute="trailing" id="Mk4-qb-uyy"/>
                             <constraint firstItem="aZZ-zc-Sbi" firstAttribute="height" secondItem="wpb-Gc-hUu" secondAttribute="height" id="Wgq-gq-68L"/>
                             <constraint firstItem="aZZ-zc-Sbi" firstAttribute="centerY" secondItem="wpb-Gc-hUu" secondAttribute="centerY" id="aey-ai-V12"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="9v6-oJ-9P7"/>
                     <connections>
+                        <outlet property="emptyTableViewLabel" destination="P2A-gs-GI0" id="yu7-VB-Gff"/>
                         <outlet property="tableView" destination="aZZ-zc-Sbi" id="MYs-ag-cdu"/>
                     </connections>
                 </viewController>

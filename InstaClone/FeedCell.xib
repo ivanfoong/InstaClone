@@ -29,7 +29,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GA8-pB-oaC">
                         <rect key="frame" x="0.0" y="296" width="320" height="34"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserID" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJM-H9-vRq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User 01" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJM-H9-vRq">
                                 <rect key="frame" x="8" y="7" width="88" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="ofT-BY-MyE"/>
@@ -39,7 +39,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0N-tG-mgP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Mar 2017 4:32pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0N-tG-mgP">
                                 <rect key="frame" x="109" y="8" width="203" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,7 +69,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="feedImageView" destination="KbP-VZ-wFk" id="3Mf-D8-J7i"/>
-                <outlet property="feedTitleLabel" destination="C0N-tG-mgP" id="eTs-gT-aUU"/>
+                <outlet property="timestampLabel" destination="C0N-tG-mgP" id="YWJ-HH-Ju9"/>
                 <outlet property="userIdLabel" destination="ZJM-H9-vRq" id="ObB-jM-F58"/>
             </connections>
             <point key="canvasLocation" x="34" y="192"/>
