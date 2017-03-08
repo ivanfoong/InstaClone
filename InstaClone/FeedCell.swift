@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class FeedCell: UITableViewCell {
     @IBOutlet weak var feedImageView: UIImageView!
@@ -31,3 +32,29 @@ class FeedCell: UITableViewCell {
         feedTitleLabel.text = nil
     }
 }
+
+extension FeedCell: CellDataSource {
+    func configureCell(with data: BaseCellData) {
+        if let cellData = data as? CellData {
+            userIdLabel.text = cellData.userId
+            feedTitleLabel.text = cellData.feedTitle
+            if let imageUrl = cellData.feedImageUrl {
+                feedImageView.af_setImage(withURL: imageUrl)
+            }
+        }
+    }
+    
+    class CellData: BaseCellData {
+        var feedImageUrl: URL?
+        var userId: String?
+        var feedTitle: String?
+        
+        init(feedImageUrl: URL?, userId: String?, feedTitle: String?) {
+            self.feedImageUrl = feedImageUrl
+            self.userId = userId
+            self.feedTitle = feedTitle
+            super.init()
+        }
+    }
+}
+

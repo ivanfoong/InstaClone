@@ -28,5 +28,24 @@ class CommentCell: UITableViewCell {
         userIdLabel.text = nil
         commentLabel.text = nil
     }
+}
+
+extension CommentCell: CellDataSource {
+    func configureCell(with data: BaseCellData) {
+        if let cellData = data as? CellData {
+            userIdLabel.text = cellData.userId
+            commentLabel.text = cellData.comment
+        }
+    }
     
+    class CellData: BaseCellData {
+        var userId: String?
+        var comment: String?
+        
+        init(userId: String?, comment: String?) {
+            self.userId = userId
+            self.comment = comment
+            super.init()
+        }
+    }
 }

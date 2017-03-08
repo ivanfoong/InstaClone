@@ -74,11 +74,14 @@ extension FeedListViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FeedCell.self)) as! FeedCell
         let feed = feeds[indexPath.row]
         
-        cell.userIdLabel.text = feed.user?.username
-        cell.feedTitleLabel.text = feed.title
-        if let imageUrlString = feed.imageUrl, let imageUrl = URL(string: imageUrlString) {
-            cell.feedImageView.af_setImage(withURL: imageUrl)
+        var feedImageUrl: URL? = nil
+        if let imageUrl = feed.imageUrl {
+            feedImageUrl = URL(string: imageUrl)
         }
+        let userId = feed.user?.username
+        let feedTitle = feed.title
+        let cellData = FeedCell.CellData(feedImageUrl: feedImageUrl, userId: userId, feedTitle: feedTitle)
+        cell.configureCell(with: cellData)
         
         return cell
     }
